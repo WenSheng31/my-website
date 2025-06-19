@@ -391,66 +391,6 @@
             color: var(--color-text-secondary);
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .form-group {
-            display: grid;
-            gap: var(--space-xs);
-        }
-
-        .form-label {
-            font-weight: 500;
-            color: var(--color-text-primary);
-        }
-
-        .form-input,
-        .form-textarea {
-            padding: var(--space-sm);
-            background-color: var(--color-secondary);
-            border: 1px solid var(--color-border);
-            border-radius: 0.375rem;
-            color: var(--color-text-primary);
-            font-family: inherit;
-            transition: border-color var(--transition-fast);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--color-text-secondary);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-button {
-            background-color: var(--color-text-primary);
-            color: var(--color-primary);
-            padding: var(--space-sm) var(--space-lg);
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .submit-button:hover {
-            background-color: var(--color-text-secondary);
-        }
-
         /* ===== FOOTER ===== */
         .footer {
             border-top: 1px solid var(--color-border);
