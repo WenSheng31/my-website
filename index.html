@@ -2,10 +2,766 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WENSHENG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WENSHENG 的個人作品集網站">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Colors */
+            --color-primary: #000000;
+            --color-secondary: #1e1e1e;
+            --color-accent: #ffffff;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #a3a3a3;
+            --color-border: #1e1e1e;
+            --color-hover: #2a2a2a;
+            
+            /* Typography */
+            --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            
+            /* Layout */
+            --container-max-width: 1200px;
+            --header-height: 3.5rem;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-sm);
+        }
+
+        /* ===== HEADER STYLES ===== */
+        .header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: var(--color-primary);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+            padding: 0 var(--space-sm);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .logo {
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--color-text-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-md);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            font-size: var(--text-sm);
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+
+        .cta-button {
+            background-color: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: var(--space-xs) var(--space-sm);
+            border: 1px solid var(--color-border);
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-hover);
+            border-color: var(--color-text-secondary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: var(--space-2xl) 0;
+            text-align: left;
+        }
+
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: 700;
+            
+            color: var(--color-text-primary);
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-2xl);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+            font-weight: 400;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-location-icon {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        .hero-description {
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--text-base);
+            transition: all var(--transition-fast);
+            border: 1px solid var(--color-border);
+        }
+
+        .hero-button-primary {
+            background-color: var(--color-text-primary);
+            color: var(--color-primary);
+        }
+
+        .hero-button-primary:hover {
+            background-color: var(--color-text-secondary);
+        }
+
+        .hero-button-secondary {
+            background-color: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .hero-button-secondary:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .hero-button-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: var(--space-2xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--text-3xl);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            text-align: left;
+        }
+
+        .section-subtitle {
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            text-align: left;
+            margin-bottom: var(--space-xl);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--color-secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .skill-card {
+            background-color: var(--color-secondary);
+            padding: var(--space-lg);
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-fast);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--color-text-secondary);
+        }
+
+        .skill-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .skill-description {
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .project-card {
+            background-color: var(--color-secondary);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-fast);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-text-secondary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--color-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+        }
+
+        .project-content {
+            padding: var(--space-lg);
+        }
+
+        .project-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .tech-tag {
+            background-color: var(--color-hover);
+            color: var(--color-text-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: var(--text-xs);
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0;
+            
+        }
+
+        .experience-item {
+            border-left: 2px solid var(--color-border);
+            padding-left: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-text-primary);
+            border-radius: 50%;
+        }
+
+        .experience-period {
+            color: var(--color-text-secondary);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-xs);
+        }
+
+        .experience-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .experience-company {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .experience-description {
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .form-group {
+            display: grid;
+            gap: var(--space-xs);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: var(--space-sm);
+            background-color: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 0.375rem;
+            color: var(--color-text-primary);
+            font-family: inherit;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-text-secondary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background-color: var(--color-text-primary);
+            color: var(--color-primary);
+            padding: var(--space-sm) var(--space-lg);
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .submit-button:hover {
+            background-color: var(--color-text-secondary);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-lg) 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            color: var(--color-text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .nav-left {
+                gap: var(--space-sm);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-button {
+                width: fit-content;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-xs);
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-left">
+                <h1 class="logo">WENSHENG</h1>
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <button class="cta-button">Contact Me</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">WenSheng</h1>
+                <p class="hero-subtitle">Full Stack Developer</p>
+                <div class="hero-location">
+                    <i data-lucide="map-pin" class="hero-location-icon"></i>
+                    <span>台灣 台北</span>
+                </div>
+                <p class="hero-description">
+                    我是一名專業的全端工程師，專精於現代網頁應用程式開發。我致力於創造實用、使用者友善的解決方案，幫助企業提升營運效率並達成數位轉型目標。
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="hero-button hero-button-primary">
+                        <i data-lucide="mail" class="hero-button-icon"></i>
+                        Hire Me
+                    </a>
+                    <a href="https://github.com" target="_blank" class="hero-button hero-button-secondary">
+                        <i data-lucide="github" class="hero-button-icon"></i>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="hero-button hero-button-secondary">
+                        <i data-lucide="linkedin" class="hero-button-icon"></i>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">關於我</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>我是一名充滿熱忱的前端工程師，擁有豐富的網頁開發經驗。專精於現代前端技術，包括 React、Vue.js、以及各種 CSS 框架。</p>
+                        <br>
+                        <p>我相信優秀的設計不僅要視覺上令人印象深刻，更要在功能性和使用者體驗上達到完美平衡。每一個專案都是我對完美追求的體現。</p>
+                        <br>
+                        <p>除了技術能力，我也重視團隊協作和持續學習，時刻關注業界最新趨勢，確保我的技能始終保持在最前沿。</p>
+                    </div>
+                    <div class="about-image">
+                        <span>個人照片</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">專業技能</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3 class="skill-title">前端開發</h3>
+                        <p class="skill-description">
+                            熟練掌握 HTML5、CSS3、JavaScript (ES6+)、TypeScript，
+                            以及 React、Vue.js 等現代前端框架。
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">UI/UX 設計</h3>
+                        <p class="skill-description">
+                            具備良好的設計美感，熟悉 Figma、Adobe XD 等設計工具，
+                            能夠設計出美觀且易用的介面。
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">響應式設計</h3>
+                        <p class="skill-description">
+                            精通 CSS Grid、Flexbox 和 Tailwind CSS，
+                            能夠創建適應各種螢幕尺寸的響應式網頁。
+                        </p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">效能優化</h3>
+                        <p class="skill-description">
+                            深入了解網頁效能優化技巧，包括程式碼分割、懶載入、
+                            圖片優化等最佳實踐。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">精選作品</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>專案截圖</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">電商平台</h3>
+                            <p class="project-description">
+                                使用 React 和 Node.js 開發的全功能電商平台，
+                                包含購物車、付款系統和後台管理功能。
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>專案截圖</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">任務管理系統</h3>
+                            <p class="project-description">
+                                團隊協作工具，具備任務分配、進度追蹤、
+                                即時通訊等功能的專案管理平台。
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>專案截圖</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">數據視覺化儀表板</h3>
+                            <p class="project-description">
+                                互動式數據儀表板，支援多種圖表類型，
+                                即時數據更新和自定義配置功能。
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">工作經歷</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="experience-period">2022 - 至今</div>
+                        <h3 class="experience-title">資深前端工程師</h3>
+                        <div class="experience-company">科技創新公司</div>
+                        <p class="experience-description">
+                            負責公司主要產品的前端開發工作，包括架構設計、效能優化、
+                            團隊技術指導等。成功提升產品載入速度 40%，使用者滿意度顯著提升。
+                        </p>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-period">2020 - 2022</div>
+                        <h3 class="experience-title">前端工程師</h3>
+                        <div class="experience-company">數位媒體公司</div>
+                        <p class="experience-description">
+                            參與多個大型網站專案的開發，熟悉敏捷開發流程，
+                            與設計師和後端工程師密切協作，確保專案順利交付。
+                        </p>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-period">2018 - 2020</div>
+                        <h3 class="experience-title">初級前端工程師</h3>
+                        <div class="experience-company">新創公司</div>
+                        <p class="experience-description">
+                            從零開始學習前端開發，快速掌握各種技術框架，
+                            積極參與程式碼審查和技術分享，奠定了紮實的技術基礎。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">聯絡我</h2>
+                <div class="contact-content">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label class="form-label" for="name">姓名</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">電子郵件</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">主旨</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">訊息</label>
+                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">發送訊息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 WENSHENG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
