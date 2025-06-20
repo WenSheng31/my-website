@@ -20,7 +20,7 @@
           target="_blank"
           class="hero-button hero-button-secondary"
         >
-          <Github class="hero-button-icon" />
+          <github class="hero-button-icon" />
           GitHub
         </a>
         <a
@@ -28,7 +28,7 @@
           target="_blank"
           class="hero-button hero-button-secondary"
         >
-          <Linkedin class="hero-button-icon" />
+          <linkedin class="hero-button-icon" />
           LinkedIn
         </a>
       </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { MapPin, Mail, Github, Linkedin } from "lucide-vue-next";
+import { MapPin, Mail, github, linkedin } from "lucide-vue-next";
 </script>
 
 <style scoped>
