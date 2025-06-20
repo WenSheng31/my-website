@@ -1,0 +1,40 @@
+# OS 系統產生的檔案
+.DS_Store
+Thumbs.db
+
+# Node.js 套件與快取
+node_modules/
+dist/
+build/
+.cache/
+.temp/
+
+# 編譯輸出
+*.log
+*.tsbuildinfo
+
+# Vite / Webpack / Nuxt 相關
+.vite/
+.next/
+.nuxt/
+out/
+
+# dotenv 檔案（通常包含敏感資訊）
+.env
+.env.*
+
+# VSCode 設定
+.vscode/
+
+# 其他 IDE 設定
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 測試快取
+coverage/
+
+# Git 忽略的備份檔
+*.swp
+*.bak
+*.tmp
