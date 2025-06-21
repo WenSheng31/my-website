@@ -40,7 +40,7 @@
 import { MapPin, Mail, Github, Linkedin } from "lucide-vue-next";
 </script>
 
-<style scoped>
+<style>
 .hero {
   padding: var(--space-2xl) 0;
   text-align: left;

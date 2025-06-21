@@ -37,7 +37,7 @@
   }
 
   .hero-button {
-    width: fit-content;
+    width: 100%;
   }
 
   .about-content {
@@ -61,6 +61,6 @@
   }
 
   .section {
-    padding: var(--space-xl) 0;
+    padding: var(--space-md) 0;
   }
 }

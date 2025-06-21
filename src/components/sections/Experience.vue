@@ -35,7 +35,7 @@
   </section>
 </template>
 
-<style scoped>
+<style>
 .experience-timeline {
   max-width: 800px;
   margin: 0;

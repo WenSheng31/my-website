@@ -25,7 +25,7 @@
   </section>
 </template>
 
-<style scoped>
+<style>
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -48,5 +48,15 @@
   align-items: center;
   justify-content: center;
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    height: 300px;
+  }
 }
 </style>
